@@ -43,7 +43,7 @@ public class EmailUtility {
         msg.setReplyTo(new Address[]{new InternetAddress(replyTo, replyToName)});
         msg.setSubject(subject);
         msg.setSentDate(new Date());
-        msg.setContent(message, "text/html");
+        msg.setContent(message, "text/html;  charset=UTF-8");
         //msg.setText(message);
 
         // sends the e-mail

@@ -45,13 +45,51 @@ public class EmailSendingServlet extends HttpServlet {
 
         String subject = "Rezerwacja [" + serviceType + "] " + name + " " + dateFrom + " - " + dateTo;
 
-        String content = "<p>" + name + "</p>"
-                + "<p>" + replyTo + "</p>"
-                + "<p>" + phone + "</p>"
-                + "<p>" + serviceType + "</p>"
-                + "<p>" + dateFrom + "</p>"
-                + "<p>" + dateTo + "</p>"
-                + "<p>" + additionalMessage + "</p>";
+        String content = "<html><head><meta charset=\"utf-8\\\">\n" +
+                "<style>\n" +
+                "    body {\n" +
+                "        background-color: #1d2124;\n" +
+                "        color: white;\n" +
+                "        font-family: Candara;\n" +
+                "    }\n" +
+                "    .content {\n" +
+                "        margin: 20px 0 0 20px;\n" +
+                "        font-size: 16px;\n" +
+                "    }\n" +
+                "    .name {\n" +
+                "        font-size: 18px;\n" +
+                "    }\n" +
+                "    .email {\n" +
+                "        font-size: 14px;\n" +
+                "        color: aquamarine;\n" +
+                "    }\n" +
+                "    .phone {\n" +
+                "        font-size: 20px;\n" +
+                "    }\n" +
+                "    .date {\n" +
+                "        font-size: 20px;\n" +
+                "        color: aquamarine;\n" +
+                "    }\n" +
+                "    a:visited, a:active, a:link {\n" +
+                "        font-family: \"Arial\";\n" +
+                "        text-decoration-line: none;\n" +
+                "        font-weight: normal;\n" +
+                "        color: aquamarine;\n" +
+                "    }\n" +
+                "    a:hover {\n" +
+                "        font-weight: bold;\n" +
+                "        text-decoration-line: none;\n" +
+                "        color: lightblue;\n" +
+                "    }\n" +
+                "\n" +
+                "</style></head><body>\n" +
+                "<div class=\"content\">\n" +
+                "<p class=\"name\"><b> " + name + " </b></p>\n" +
+                "<p class=\"email\">email:  " + replyTo + "</p>\n" +
+                "    <p>tel. <a href=\"tel:" + phone + "\"><span class=\"phone\">" + phone + "</span></a></p>\n" +
+                "<p>usługa: " + serviceType + "</p>\n" +
+                "    <p>termin od  <span class=\"date\">" + dateFrom + "</span>  do  <span class=\"date\">" + dateTo + "</span></p>\n" +
+                "<p>wiadomość:  " + additionalMessage + " </p></div></body></html>";
 
 
         String resultMessage = "";
@@ -59,10 +97,10 @@ public class EmailSendingServlet extends HttpServlet {
         try {
             EmailUtility.sendEmail(host, port, user, pass, recipient, replyTo, name, subject,
                     content);
-            resultMessage = "The e-mail was sent successfully";
+            resultMessage = "Prośba o rezerwację zostala wysłana. Teraz poczekaj na potwierdzenie na email.";
         } catch (Exception ex) {
             ex.printStackTrace();
-            resultMessage = "There were an error: " + ex.getMessage();
+            resultMessage = "Wystąpił błąd: " + ex.getMessage();
         } finally {
             request.setAttribute("Message", resultMessage);
             getServletContext().getRequestDispatcher("/Result.jsp").forward(
