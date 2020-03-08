@@ -8980,6 +8980,19 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
-body {
-  background-image:url('/images/background.jpg') !important;
+body, html {
+  background-image: url('/images/background.jpg');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.display-4 {
+  color: white;
+  font-weight: bolder;
+}
+
+.lead {
+  color: white;
 }
