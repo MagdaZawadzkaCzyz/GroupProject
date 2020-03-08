@@ -44,7 +44,12 @@
       <artifactId>google-api-services-calendar</artifactId>
       <version>v3-rev305-1.23.0</version>
     </dependency>
-
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
     <dependency>
       <groupId>com.google.api-client</groupId>
       <artifactId>google-api-client</artifactId>
