@@ -52,4 +52,3 @@ public class ShowEvents extends HttpServlet {
     }
 
 }
-

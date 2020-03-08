@@ -35,7 +35,7 @@
             <div class="card-heading"></div>
             <div class="card-body">
                 <h2 class="title">Rezerwuj wizytę</h2>
-                <form method="POST">
+                <form action="EmailSendingServlet" method="POST">
                     <div class="input-group">
                         <input class="input--style-3" type="text" placeholder="Imię i nazwisko" name="name">
                     </div>
@@ -47,7 +47,11 @@
                     </div>
                     <div class="input-group">
                         <div class="rs-select2 js-select-simple select--no-search">
-                            <select name="usługa">
+                            <%--
+                                 nie stosujcie polskich znaków w nazwach parametrów, może teraz to już lepiej wszystko działa,
+                                 ale na starszych przeglądarkach może rzucać błędami
+                                 <select name="usługa"> --%>
+                            <select name="serviceType">
                                 <option disabled="disabled" selected="selected">Wybierz usługę</option>
                                 <option>Warkocze</option>
                                 <option>Dredy</option>
@@ -68,7 +72,8 @@
                     </div>
                     <div class="input-group">
                         <input class="input--style-3" type="text" placeholder="Dodaj wiadomość:" name="message">
-                        <textarea name="comments" id="commentsText" rows="10" cols="30" class="required requiredField" style="min-width: 100%"></textarea>
+                        <textarea name="comments" id="commentsText" rows="10" cols="30" class="required requiredField"
+                                  style="min-width: 100%"></textarea>
                     </div>
 
                     <div class="p-t-10">
